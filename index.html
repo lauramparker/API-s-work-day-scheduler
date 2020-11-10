@@ -23,16 +23,74 @@
   </head>
 
   <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> <!--JQuery script-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script> <!--Moment script-->
+   
+
     <header class="jumbotron">
       <h1 class="display-3">Work Day Scheduler</h1>
       <p class="lead">A simple calendar app for scheduling your work day</p>
       <p id="currentDay" class="lead"></p>
     </header>
-    <div class="container">
-      <!-- Timeblocks go here -->
+    <div class="container" id="maincontainer"> <!--parent container-->
+      
+      <div class="row" class="hourly"> <!--FIX: Why is the first row taller than the others????-->
+        <div class="col-xs-2, border border-dark, border-left-0" style="width: 6rem"  id="nine">
+          <p><span class="align-text-top">9 AM</span></p> 
+        </div>
+      </div>
+
+      <div class="row" id="hourly">
+        <div class="col-xs-2, border border-dark, border-left-0" style="width: 6rem" id="ten">
+          <p><span class="align-text-top">10 AM</span></p> 
+        </div>
+      </div>
+
+      <div class="row" class="hourly">
+        <div class="col-xs-2, border border-dark, border-left-0" style="width: 6rem"  id="eleven">
+          <p><span class="align-text-top">11 AM</span></p> 
+        </div>
+      </div>
+
+      <div class="row" class="hourly">
+        <div class="col-xs-2, border border-dark, border-left-0" style="width: 6rem"  id="twelve">
+          <p><span class="align-text-top">12 PM</span></p> 
+        </div>
+      </div>
+
+      <div class="row" class="hourly">
+        <div class="col-xs-2, border border-dark, border-left-0" style="width: 6rem"  id="one">
+          <p><span class="align-text-top">1 PM</span></p> 
+        </div>
+      </div>
+
+      <div class="row" class="hourly">
+        <div class="col-xs-2, border border-dark, border-left-0" style="width: 6rem"  id="two">
+          <p><span class="align-text-top">2 PM</span></p> 
+        </div>
+      </div>
+
+      <div class="row" class="hourly">
+        <div class="col-xs-2, border border-dark, border-left-0" style="width: 6rem"  id="three">
+          <p><span class="align-text-top">3 PM</span></p> 
+        </div>
+      </div>
+       
+      <div class="row" class="hourly">
+        <div class="col-xs-2, border border-dark, border-left-0" style="width: 6rem"  id="four">
+          <p><span class="align-text-top">4 PM</span></p> 
+        </div>
+      </div>
+       
+      <div class="row" class="hourly">
+        <div class="col-xs-2, border border-dark, border-left-0" style="width: 6rem"  id="five">
+          <p><span class="align-text-top">5 PM</span></p> 
+        </div>
+      </div>
+      
+               
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="./script.js" ></script>
   </body>
 </html>
