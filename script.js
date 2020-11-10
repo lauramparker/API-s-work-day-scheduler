@@ -6,6 +6,10 @@ var timeBlocks = $("#timeblocks");
 
 var main = $("#maincontainer");
 
+var hourly = $("#hourly");
+
+var timeofday = ["9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM"];
+
 
 
 // var myvar = $("#element") //setting a variable name to an existing element with an ID
@@ -25,26 +29,49 @@ var main = $("#maincontainer");
 
 //FUNCTIONS
 
+//build hourly calendar
+
+$.each(timeofday, function(){}
+
+
 //EVENTS
+//append entry field (form) to each hour in class row
 
-function create () {
+let hour = $("<div>");
+    hour.attr("class", "col-md-6");
+    // hour.attr("class", "form-group");
+    //hour.attr("class", "textarea")
+    hour.attr("class", "entry");
+    hour.text("this is the time");
+$(".row").append(hour);
 
-var hour = $("<div>");
-hour.text("this is the time");
-hour.attr("class", "row").attr("class", "hourly");
-$("#maincontainer").append(hour);
-};
 
-create();
+let hourinput = $("<input>");
+    //hourform.attr("class", "col-md-6");
+    hourinput.attr("type","text");
+    $("hour").append(hourform);
+
+
+//create click event when user clicks ".entry" to capture input on form. 
+
+
+//Store as object, set index values
+
+
+
+
 
 // $("#maincontainer").html("<div></div>"); //creating new html element inside an existing wrapper id (div or similar)
 
-// <div class="row">
-// <div class="col-md-6 col-xs-10" class="hourly"> 
-//   <p>testing</p>
-// </div>
-// <div class="col-xs-2" class="entry">
-//   <p>testing</p>
+// //* <div class="row" class="hourly"> THIS IS WHAT NEEDS TO APPEND TO THE INDIVIDUAL HOUR ID's!
+//             <div class="col-md-6 col-xs-10" class="entry"> <!--parent column... 2 CLASSES???????-->
+//               <p>testing</p>
+//             </div>
+//             <div class="col-xs-2" class="save"> <!--parent column-->
+//               <p>testing</p>
+
+//             </div>
+//           </div>  *//
 
 //  // appending the variable name of the element to the wrapper
 
