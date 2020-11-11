@@ -40,7 +40,7 @@ var timeofday = ["9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM
 
 //update today's date and append to header
 
-var todaysDate = moment().format('MMMM Do[,] YYYY'); //Change format?
+var todaysDate = moment().format('MMMM Do[,] YYYY'); //NEED Day of Week
     $("#currentDay").append(todaysDate);
 
 
@@ -49,8 +49,15 @@ var todaysDate = moment().format('MMMM Do[,] YYYY'); //Change format?
 let hour = $("<input>");
     hour.addClass("col-md-7 border border-dark");
     $(".row").append(hour);
-    hour.attr("time","moment().hour()"); //???Assigning the current hour to each var hour
+    
 
+//FOCUS HEEEEEEEEEEEERERERE:   Need a function that assigns hours to each line
+//and then compares those indices to the function below that changes colors    
+hour.attr("index","9");
+
+hour.attr("time","moment().hour()"); //???Assigning the current hour to each var hour
+
+   
 
 //function to iterate through the input fields and change colors
 $("input").each(function( i ) {
