@@ -38,10 +38,10 @@ var hour = $("<input>");
 //PART II - Assign hours and compare real time
 
 //function that assigns hours to each element of hourblock class
-$(".hourblock").each((i, hour) => { //2nd parameter is DOM object hour OR $(this)
-    i = 9;   ///HOW do I set i = 9, keep in 24 hour time to compare to moment output 
-    var hourcode = i++;  
-        hour.attr("index", hourcode); 
+$(".hourblock").each(function (i, hour) {
+        var hourcode = 9 + (i++); ///HOW do I set i = 9, keep in 24 hour time to compare to moment output 
+        $("hour").val(hourcode);
+        $("hour").attr("index", hourcode); 
     }); 
 
 
