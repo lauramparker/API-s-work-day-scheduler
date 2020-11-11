@@ -12,31 +12,13 @@ var timeofday = ["9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM
 
 
 
-
-// var myvar = $("#element") //setting a variable name to an existing element with an ID
-
-// var newdiv = $("<div>") // creating an Element;
-// newdiv.text("New element text") //giving the new element text (this is different from .html which creates a new HTML element with text STRING)
-
-// $("#current-div").html("<h1>StartButton</h1>"); //creating new html element inside an existing wrapper id (div or similar)
-
-// $("#current-div").append(newdiv) // appending the variable name of the element to the wrapper
-
-// newdiv.attr("class", "fancy"); //grabs the fancy class from CSS to style the newDiv element in the fancy style
-
-// $.each(arrayname, function(index, property){}  //for each item in array or object, do THIS function.. see Tues 1:35 stringing functions together!!! fluent styles
-
-
-
 //FUNCTIONS
 
-//build hourly calendar
 
-//$.each(timeofday, function(){}
+//PART 1 - Create the elements & append
 
-
-
-//EVENTS
+        //TBD - build hourly calendar (to replace hard code in html. TBD)
+            //$.each(timeofday, function(){}
 
 //update today's date and append to header
 
@@ -46,59 +28,41 @@ var todaysDate = moment().format('MMMM Do[,] YYYY'); //NEED Day of Week
 
 //append entry field (input) to each hour in class row
 
-let hour = $("<input>");
+var hour = $("<input>");
     hour.addClass("col-md-7 border border-dark");
+    hour.addClass("hourblock");  //adds class to all the input rows for color change function
     $(".row").append(hour);
+
     
 
-//FOCUS HEEEEEEEEEEEERERERE:   Need a function that assigns hours to each line
+//PART II - Assign hours and compare real time
+
+//function that assigns hours to each element of hourblock class
+$(".hourblock").each((i, hour) => { //2nd parameter is DOM object hour OR $(this)
+    i = 9;   ///HOW do I set i = 9, keep in 24 hour time to compare to moment output 
+    var hourcode = i++;  
+        hour.attr("index", hourcode); 
+    }); 
+
+
 //and then compares those indices to the function below that changes colors    
-hour.attr("index","9");
-
-hour.attr("time","moment().hour()"); //???Assigning the current hour to each var hour
-
-   
-
 //function to iterate through the input fields and change colors
-$("input").each(function( i ) {
-    if  { //time is past
-    this.style.backgroundColor = "lightgrey";
-    } else {//time is present
-    this.style.backgroundColor = "red";
-    }//time is future
-    this.style.backgroundColor = "lightgreen";
-});
 
-//change color of hour based on past, present, future time
+$(".hourblock").each(function(_index, hourcode) { 
+    var presentHour = moment().hour();
+        if (presentHour > hourcode)  {     //time is past
+            this.style.backgroundColor = "lightgrey"; //is this referring to .hourblock??
 
-var currentHour = moment().hour();
-//     if (currentHour < 9) {
-//         this.style.color = "blue";
-//     }
+        } else if (presentHour == hourcode) {    //time is present
+            this.style.backgroundColor = "red";
+
+        }  else  {   //time is future
+            this.style.backgroundColor = "lightgreen";
+        };
+    });
 
 
-// //for.each for timeblocks?
-
-// $(document.body).click(function() {  //hover? scroll?
-//     $("input").each(function( i ) {
-//       if ( this.style.color !== "blue" ) {
-//         this.style.color = "blue";
-//       } else {
-//         this.style.color = "";
-//       }
-//     });
-//   });
-
-
-
-
-//var timePassed =moment().startOf('day').fromNow();
-    
-
-
-
-
-
+//PART III - Save, Local Storage
 
 //append a save button to each hour field
 
@@ -114,65 +78,9 @@ let save = $("<button>");
 //save the information that the user enters into hour (click event)
 // $(".savebtn").on("click", function (){
      
-// // };
+//};
 
 
-//Store as object, set index values
-
-
-
-
-
-// $("#maincontainer").html("<div></div>"); //creating new html element inside an existing wrapper id (div or similar)
-
-// //* <div class="row" class="hourly"> THIS IS WHAT NEEDS TO APPEND TO THE INDIVIDUAL HOUR ID's!
-//             <div class="col-md-6 col-xs-10" class="entry"> <!--parent column... 2 CLASSES???????-->
-//               <p>testing</p>
-//             </div>
-//             <div class="col-xs-2" class="save"> <!--parent column-->
-//               <p>testing</p>
-
-//             </div>
-//           </div>  *//
-
-//  // appending the variable name of the element to the wrapper
-
-
-// // THEN I am presented with time blocks for standard business hours
-//     // time blocks in index.html (using bootstrap grid & for each.
-
-
-
-
-
-
-
-
-// // GIVEN I am using a daily planner to create a schedule
-
-// // WHEN I open the planner
-
-// // THEN the current day is displayed at the top of the calendar
-//     //index.html display date 
-//     //dynamic html (with jquery to change text, line 6)
-
-// // WHEN I scroll down
-
-
-
-
-
-
-// // WHEN I view the time blocks for that day
-// // THEN each time block is color-coded to indicate whether it is in the past, present, or future
-//     //dynamic html (jquery that styles, line 12) based on past, present, future
-
-
-
-// // WHEN I click into a time block
-//     //event handler to generate 
-// // THEN I can enter an event
-//     //??? bootstrap form ??? ...
 
 //     // WHEN I click the save button for that time block
 //         //event handler
