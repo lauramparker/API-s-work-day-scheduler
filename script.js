@@ -12,6 +12,7 @@ var timeofday = ["9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM
 
 
 
+
 // var myvar = $("#element") //setting a variable name to an existing element with an ID
 
 // var newdiv = $("<div>") // creating an Element;
@@ -31,28 +32,82 @@ var timeofday = ["9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM
 
 //build hourly calendar
 
-$.each(timeofday, function(){}
+//$.each(timeofday, function(){}
+
 
 
 //EVENTS
-//append entry field (form) to each hour in class row
 
-let hour = $("<div>");
-    hour.attr("class", "col-md-6");
-    // hour.attr("class", "form-group");
-    //hour.attr("class", "textarea")
-    hour.attr("class", "entry");
-    hour.text("this is the time");
-$(".row").append(hour);
+//update today's date and append to header
+
+var todaysDate = moment().format('MMMM Do[,] YYYY'); //Change format?
+    $("#currentDay").append(todaysDate);
 
 
-let hourinput = $("<input>");
-    //hourform.attr("class", "col-md-6");
-    hourinput.attr("type","text");
-    $("hour").append(hourform);
+//append entry field (input) to each hour in class row
+
+let hour = $("<input>");
+    hour.addClass("col-md-7 border border-dark");
+    $(".row").append(hour);
+    hour.attr("time","moment().hour()"); //???Assigning the current hour to each var hour
 
 
-//create click event when user clicks ".entry" to capture input on form. 
+//function to iterate through the input fields and change colors
+$("input").each(function( i ) {
+    if  { //time is past
+    this.style.backgroundColor = "lightgrey";
+    } else {//time is present
+    this.style.backgroundColor = "red";
+    }//time is future
+    this.style.backgroundColor = "lightgreen";
+});
+
+//change color of hour based on past, present, future time
+
+var currentHour = moment().hour();
+//     if (currentHour < 9) {
+//         this.style.color = "blue";
+//     }
+
+
+// //for.each for timeblocks?
+
+// $(document.body).click(function() {  //hover? scroll?
+//     $("input").each(function( i ) {
+//       if ( this.style.color !== "blue" ) {
+//         this.style.color = "blue";
+//       } else {
+//         this.style.color = "";
+//       }
+//     });
+//   });
+
+
+
+
+//var timePassed =moment().startOf('day').fromNow();
+    
+
+
+
+
+
+
+//append a save button to each hour field
+
+let save = $("<button>");
+    save.addClass("col-md-1 border border-dark rounded-right");
+    save.attr("style","background-color:lightblue")
+    $(".row").append(save);
+
+//add image src to the save button
+    
+
+
+//save the information that the user enters into hour (click event)
+// $(".savebtn").on("click", function (){
+     
+// // };
 
 
 //Store as object, set index values
