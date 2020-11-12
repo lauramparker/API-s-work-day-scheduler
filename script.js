@@ -8,7 +8,9 @@ var main = $("#maincontainer");
 
 var hourly = $("#hourly");
 
-var timeofday = ["9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM"];
+var timeofday = [9,10,11,12,13,14,15,16,17];
+
+var entryText = []; //set to an empty array 
 
 
 
@@ -17,8 +19,6 @@ var timeofday = ["9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM
 
 //PART 1 - Create the elements & append
 
-        //TBD - build hourly calendar (to replace hard code in html. TBD)
-            //$.each(timeofday, function(){}
 
 //update today's date and append to header
 
@@ -30,25 +30,36 @@ var todaysDate = moment().format('MMMM Do[,] YYYY'); //NEED Day of Week
 
 var hour = $("<input>");
     hour.addClass("col-md-7 border border-dark");
-    hour.addClass("hourblock");  //adds class to all the input rows for color change function
+    hour.addClass("entrynote hourblock hourblock-color"); //class for identifying the note source, hour field, and background color
     $(".row").append(hour);
+
+
+//append a save button to each hour field
+
+let save = $("<button>");
+    save.addClass("col-md-1 border border-dark rounded-right");
+    save.addClass("savebtn");
+    save.attr("style","background-color:lightblue");
+    save.text("Save");
+    $(".row").append(save);
 
     
 
 //PART II - Assign hours and compare real time
 
 //function that assigns hours to each element of hourblock class
-$(".hourblock").each(function (i, hour) {
-        var hourcode = 9 + (i++); ///HOW do I set i = 9, keep in 24 hour time to compare to moment output 
-        $("hour").val(hourcode);
-        $("hour").attr("index", hourcode); 
-    }); 
+
+for (var i = 0; i < timeofday.length; i++) {
+    var hourcode = $("<div>"); //create non-displayed div to store the hourcode
+    hour.attr("data-time", timeofday[i]);
+    hour.append(hourcode);
+    };
 
 
 //and then compares those indices to the function below that changes colors    
 //function to iterate through the input fields and change colors
 
-$(".hourblock").each(function(_index, hourcode) { 
+$(".hourblock").each(function(hourcode) { 
     var presentHour = moment().hour();
         if (presentHour > hourcode)  {     //time is past
             this.style.backgroundColor = "lightgrey"; //is this referring to .hourblock??
@@ -62,23 +73,39 @@ $(".hourblock").each(function(_index, hourcode) {
     });
 
 
-//PART III - Save, Local Storage
+//PART III - Save (using an array to save instead of local storage)
 
-//append a save button to each hour field
+//assigns text value to each key for input/hour/hourblock & stores in Object
 
-let save = $("<button>");
-    save.addClass("col-md-1 border border-dark rounded-right");
-    save.attr("style","background-color:lightblue")
-    $(".row").append(save);
+for (var i = 0; i < 10; i++) {
+    var note = $("<p>"); //create non-displayed div to store the users entry text
+//$(".entrynote").each(function(hour) {   
+    var note = $(this).val();
+    hour.attr("data-entry", note);
+    var note= entryText(i); 
+    };
 
-//add image src to the save button
-    
+
+$(".savebtn").on("click", function (){
+// turn a JQuery object into an array
+    var inputElem = $("entrynote");
+    var entryText = $.makeArray(inputElem);
+    console.log(entryText);
+    //var userEntry = localStorage.setItem("data-entry", )
+
+});
 
 
-//save the information that the user enters into hour (click event)
+
+
+// // //save the information that the user enters into hour (click event)
 // $(".savebtn").on("click", function (){
-     
-//};
+//     // let userEntry = text.$(hour); //text value of the "hour" input
+//     var userEntry = localStorage.setItem("data-entry", ); //key name
+//     if (userEntry === null) {
+// //     
+// //     }
+// // // //};
 
 
 
