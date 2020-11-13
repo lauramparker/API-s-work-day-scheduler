@@ -10,7 +10,7 @@ var hourly = $("#hourly");
 
 var timeofday = [9,10,11,12,13,14,15,16,17];
 
-var entryText = []; //set to an empty array 
+
 
 
 
@@ -22,7 +22,7 @@ var entryText = []; //set to an empty array
 
 //update today's date and append to header
 
-var todaysDate = moment().format('MMMM Do[,] YYYY'); //NEED Day of Week
+var todaysDate = moment().format('dddd, MMMM Do[,] YYYY'); //NEED Day of Week
     $("#currentDay").append(todaysDate);
 
 
@@ -50,70 +50,52 @@ let save = $("<button>");
 //function that assigns hours to each element of hourblock class
 
 for (var i = 0; i < timeofday.length; i++) {
-    var hourcode = $("<div>"); //create non-displayed div to store the hourcode
-    hour.attr("data-time", timeofday[i]);
+    var hourcode = timeofday[i];
     hour.append(hourcode);
-    };
-
-
-//and then compares those indices to the function below that changes colors    
+    hour.attr("id", hourcode);
+    console.log(hourcode); //hourcode is confirmed 9-17
+};
+    
 //function to iterate through the input fields and change colors
 
 $(".hourblock").each(function(hourcode) { 
     var presentHour = moment().hour();
-        if (presentHour > hourcode)  {     //time is past
+    var adjustHour = hourcode + 9  //this is a work around as hourcode not passing the value I want
+          if (presentHour > adjustHour)  {     //time is past
             this.style.backgroundColor = "lightgrey"; //is this referring to .hourblock??
 
-        } else if (presentHour == hourcode) {    //time is present
+        } else if (presentHour == adjustHour) {    //time is present
             this.style.backgroundColor = "red";
 
         }  else  {   //time is future
             this.style.backgroundColor = "lightgreen";
         };
-    });
-
-
-//PART III - Save (using an array to save instead of local storage)
-
-//assigns text value to each key for input/hour/hourblock & stores in Object
-
-for (var i = 0; i < 10; i++) {
-    var note = $("<p>"); //create non-displayed div to store the users entry text
-//$(".entrynote").each(function(hour) {   
-    var note = $(this).val();
-    hour.attr("data-entry", note);
-    var note= entryText(i); 
-    };
-
-
-$(".savebtn").on("click", function (){
-// turn a JQuery object into an array
-    var inputElem = $("entrynote");
-    var entryText = $.makeArray(inputElem);
-    console.log(entryText);
-    //var userEntry = localStorage.setItem("data-entry", )
-
+    
 });
 
 
+//PART III - Save
 
-
-// // //save the information that the user enters into hour (click event)
-// $(".savebtn").on("click", function (){
-//     // let userEntry = text.$(hour); //text value of the "hour" input
-//     var userEntry = localStorage.setItem("data-entry", ); //key name
-//     if (userEntry === null) {
-// //     
-// //     }
-// // // //};
+//assigns text value to each key for input/hour/hourblock & stores in Object
 
 
 
-//     // WHEN I click the save button for that time block
-//         //event handler
-//     // THEN the text for that event is saved in local storage
+$(".savebtn").on("click", function (hour, hourcode){    
 
+    for (var i = 0; i < 10; i++) {
 
+    var note = (".input").value.trim();
 
-//     // WHEN I refresh the page
-// // THEN the saved events persist
+    var entryText = JSON.parse(window.localStorage.getItem("entryText")) || [];
+
+    var userEntry = {
+        hour: hourcode,
+        note: note
+      };
+  
+    entryText.push(userEntry);
+    window.localStorage.setItem("entryText", JSON.stringify(entryText));
+
+    }
+
+});
