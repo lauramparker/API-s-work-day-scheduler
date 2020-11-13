@@ -34,6 +34,8 @@
 <h3>Installation:</h3>
     To run the development environment, clone the repository found at  https://github.com/lparker78/Thid-Party-API-s-Work-Day-Scheduler-BootCamp5
 
+    The scripts to JQuery and Moment.js are included in the html file.
+
 <h3>Usage:</h3>
     Use this project as a beginner's example of JQuery functionality.
 
