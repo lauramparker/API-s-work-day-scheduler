@@ -14,7 +14,7 @@
         4) The user can click any save button to save their input. 
         5) The information is saved to local storage and retained when the user refreshes the site.
 
-        The live site is found out:  https://lparker78.github.io/Thid-Party-API-s-Work-Day-Scheduler-BootCamp5/
+        The live site is found out:  https://lparker78.github.io/Third-Party-API-s-Work-Day-Scheduler-BootCamp5/
 
 
 <h5>Partial Screenshots of User Experience</h5>
@@ -32,7 +32,7 @@
 
 
 <h3>Installation:</h3>
-    To run the development environment, clone the repository found at  https://github.com/lparker78/Thid-Party-API-s-Work-Day-Scheduler-BootCamp5
+    To run the development environment, clone the repository found at  https://github.com/lparker78/Third-Party-API-s-Work-Day-Scheduler-BootCamp5
 
     The scripts to JQuery and Moment.js are included in the html file.
 
